@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #39FF14; /* Bright Lime Green */
+  --color-brand-secondary: #4B0082; /* Dark Purple */
+  --color-brand-dark: #1F2937; /* Dark Charcoal */
+  --color-brand-light: #F9FAFB; /* Off white / light gray */
+}
+
+@layer base {
+  body {
+    @apply text-brand-dark bg-white font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight text-brand-dark;
+  }
+}
+
+@layer utilities {
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  .text-shadow-md {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+}
