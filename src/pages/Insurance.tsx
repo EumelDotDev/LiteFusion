@@ -1,6 +1,5 @@
 import React from 'react';
-import { ShieldCheck, ArrowRight, CheckCircle } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ShieldCheck, CheckCircle } from 'lucide-react';
 
 const Insurance: React.FC = () => {
   return (
