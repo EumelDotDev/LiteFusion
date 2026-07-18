@@ -124,6 +124,41 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* Mobile Service Advantage */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-brand-dark rounded-3xl overflow-hidden shadow-2xl relative">
+            <div className="absolute inset-0 opacity-20">
+              <img src="https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?q=80&w=2000&auto=format&fit=crop" alt="Map background" className="w-full h-full object-cover" />
+            </div>
+            <div className="relative p-10 md:p-16 flex flex-col md:flex-row items-center gap-12 z-10">
+              <div className="md:w-2/3">
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">The Mobile Service Advantage</h2>
+                <p className="text-xl text-gray-300 mb-8 max-w-2xl">
+                  Why take time out of your busy day to sit in a repair shop waiting room? Our expert technicians come directly to your home, office, or anywhere in the Richmond area.
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="bg-white/10 p-6 rounded-xl backdrop-blur-sm border border-white/20">
+                    <h3 className="text-xl font-bold text-brand-primary mb-2">We Come to You</h3>
+                    <p className="text-gray-300 text-sm">Serving Richmond, VA and all surrounding areas within a 30-mile radius.</p>
+                  </div>
+                  <div className="bg-white/10 p-6 rounded-xl backdrop-blur-sm border border-white/20">
+                    <h3 className="text-xl font-bold text-brand-primary mb-2">Fully Equipped</h3>
+                    <p className="text-gray-300 text-sm">Our mobile vans have everything needed for a perfect repair or replacement.</p>
+                  </div>
+                </div>
+              </div>
+              <div className="md:w-1/3 text-center">
+                <Link to="/service-areas" className="inline-block bg-white text-brand-dark hover:bg-brand-primary hover:text-brand-dark text-lg font-bold py-4 px-8 rounded-md shadow-lg transition duration-300 w-full mb-4">
+                  View Service Areas
+                </Link>
+                <p className="text-gray-400 text-sm italic">Same-day service often available!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 4. How It Works */}
       <section className="py-20 bg-brand-dark text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -155,6 +190,40 @@ const Home: React.FC = () => {
             <Link to="/contact" className="inline-block bg-brand-primary hover:bg-[#32CD32] text-brand-dark font-bold py-3 px-8 rounded-md shadow transition duration-300">
               Start The Process
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Insurance Assistance */}
+      <section className="py-20 bg-brand-primary/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            <div className="md:w-1/2">
+              <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2000&auto=format&fit=crop" alt="Insurance Paperwork" className="rounded-xl shadow-lg" />
+            </div>
+            <div className="md:w-1/2">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">Zero Out-of-Pocket Insurance Claims</h2>
+              <p className="text-lg text-gray-600 mb-6">
+                Did you know that most insurance companies will waive your deductible for windshield repairs? That means your repair could be completely free!
+              </p>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="text-brand-secondary h-6 w-6" />
+                  <span className="text-gray-700 font-medium">We work with ALL major insurance carriers</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="text-brand-secondary h-6 w-6" />
+                  <span className="text-gray-700 font-medium">We handle the claims process from start to finish</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="text-brand-secondary h-6 w-6" />
+                  <span className="text-gray-700 font-medium">No impact on your insurance premiums for repairs</span>
+                </li>
+              </ul>
+              <Link to="/insurance" className="inline-flex items-center gap-2 text-brand-secondary font-bold hover:underline">
+                Learn more about our insurance process <ArrowRight className="h-5 w-5" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>

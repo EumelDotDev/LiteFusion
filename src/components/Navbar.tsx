@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -10,11 +10,24 @@ const Navbar: React.FC = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Services', path: '/services' },
+    { name: 'Services', path: '/services', hasDropdown: true },
+    { name: 'Insurance', path: '/insurance' },
+    { name: 'FAQ', path: '/faq' },
     { name: 'About Us', path: '/about' },
     { name: 'Service Areas', path: '/service-areas' },
+  ];
+
+  const serviceSubLinks = [
+    { name: 'Windshield Repair', path: '/services/windshield-repair' },
+    { name: 'Windshield Replacement', path: '/services/windshield-replacement' },
+    { name: 'Door Glass Replacement', path: '/services/door-glass' },
+    { name: 'Backglass Replacement', path: '/services/backglass' },
+    { name: 'Side View Mirrors', path: '/services/side-view-mirror' },
+    { name: 'Regulator & Motor', path: '/services/regulator-motor' },
   ];
 
   const isActive = (path: string) => {
@@ -36,17 +49,46 @@ const Navbar: React.FC = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                className={`${
-                  isActive(link.path)
-                    ? 'text-brand-primary font-semibold border-b-2 border-brand-primary'
-                    : 'text-brand-dark hover:text-brand-primary'
-                } transition-colors duration-200 py-2 text-sm uppercase tracking-wider`}
-              >
-                {link.name}
-              </Link>
+              link.hasDropdown ? (
+                <div key={link.name} className="relative group">
+                  <Link
+                    to={link.path}
+                    className={`${
+                      isActive(link.path)
+                        ? 'text-brand-primary font-semibold border-b-2 border-brand-primary'
+                        : 'text-brand-dark hover:text-brand-primary'
+                    } transition-colors duration-200 py-2 text-sm uppercase tracking-wider flex items-center gap-1`}
+                  >
+                    {link.name} <ChevronDown className="w-4 h-4" />
+                  </Link>
+                  {/* Dropdown Menu */}
+                  <div className="absolute left-0 mt-2 w-64 bg-white border border-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                    <div className="py-2">
+                      {serviceSubLinks.map((subLink) => (
+                        <Link 
+                          key={subLink.name}
+                          to={subLink.path} 
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-brand-primary/10 hover:text-brand-primary transition-colors"
+                        >
+                          {subLink.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  className={`${
+                    isActive(link.path)
+                      ? 'text-brand-primary font-semibold border-b-2 border-brand-primary'
+                      : 'text-brand-dark hover:text-brand-primary'
+                  } transition-colors duration-200 py-2 text-sm uppercase tracking-wider`}
+                >
+                  {link.name}
+                </Link>
+              )
             ))}
             <Link
               to="/contact"
@@ -77,18 +119,47 @@ const Navbar: React.FC = () => {
         <div className="md:hidden bg-white border-t border-gray-100 shadow-lg absolute w-full">
           <div className="px-2 pt-2 pb-6 space-y-1 sm:px-3">
             {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`${
-                  isActive(link.path)
-                    ? 'text-brand-primary bg-brand-light font-semibold'
-                    : 'text-brand-dark hover:bg-brand-light hover:text-brand-primary'
-                } block px-3 py-3 rounded-md text-base uppercase tracking-wider transition-colors duration-200`}
-              >
-                {link.name}
-              </Link>
+              <div key={link.name}>
+                <div className="flex items-center justify-between">
+                  <Link
+                    to={link.path}
+                    onClick={() => !link.hasDropdown && setIsMobileMenuOpen(false)}
+                    className={`${
+                      isActive(link.path)
+                        ? 'text-brand-primary bg-brand-light font-semibold'
+                        : 'text-brand-dark hover:bg-brand-light hover:text-brand-primary'
+                    } block px-3 py-3 rounded-md text-base uppercase tracking-wider transition-colors duration-200 w-full`}
+                  >
+                    {link.name}
+                  </Link>
+                  {link.hasDropdown && (
+                    <button 
+                      onClick={() => setIsServicesOpen(!isServicesOpen)}
+                      className="p-3 text-brand-dark hover:text-brand-primary bg-gray-50 rounded-md ml-2"
+                    >
+                      <ChevronDown className={`w-5 h-5 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                  )}
+                </div>
+                
+                {/* Mobile Dropdown */}
+                {link.hasDropdown && isServicesOpen && (
+                  <div className="pl-6 pr-3 py-2 space-y-1 bg-gray-50 mt-1 rounded-md">
+                    {serviceSubLinks.map((subLink) => (
+                      <Link
+                        key={subLink.name}
+                        to={subLink.path}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className={`${
+                          isActive(subLink.path) ? 'text-brand-primary font-semibold' : 'text-gray-600 hover:text-brand-primary'
+                        } block py-2 text-sm transition-colors`}
+                      >
+                        {subLink.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
             <Link
               to="/contact"

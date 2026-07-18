@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-brand-dark text-white pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Brand Info */}
           <div>
             <div className="flex items-center gap-2 mb-6">
@@ -29,15 +29,29 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
+          {/* Our Services */}
+          <div>
+            <h3 className="text-xl font-semibold mb-6 text-white border-b border-gray-700 pb-2 inline-block">Our Services</h3>
+            <ul className="space-y-3">
+              <li><Link to="/services/windshield-repair" className="text-gray-300 hover:text-brand-primary transition-colors">Windshield Repair</Link></li>
+              <li><Link to="/services/windshield-replacement" className="text-gray-300 hover:text-brand-primary transition-colors">Windshield Replacement</Link></li>
+              <li><Link to="/services/door-glass" className="text-gray-300 hover:text-brand-primary transition-colors">Door Glass</Link></li>
+              <li><Link to="/services/backglass" className="text-gray-300 hover:text-brand-primary transition-colors">Backglass</Link></li>
+              <li><Link to="/services/side-view-mirror" className="text-gray-300 hover:text-brand-primary transition-colors">Side View Mirrors</Link></li>
+              <li><Link to="/services/regulator-motor" className="text-gray-300 hover:text-brand-primary transition-colors">Regulators & Motors</Link></li>
+            </ul>
+          </div>
+
           {/* Quick Links */}
           <div>
             <h3 className="text-xl font-semibold mb-6 text-white border-b border-gray-700 pb-2 inline-block">Quick Links</h3>
             <ul className="space-y-3">
               <li><Link to="/" className="text-gray-300 hover:text-brand-primary transition-colors">Home</Link></li>
-              <li><Link to="/services" className="text-gray-300 hover:text-brand-primary transition-colors">Our Services</Link></li>
               <li><Link to="/about" className="text-gray-300 hover:text-brand-primary transition-colors">About Us</Link></li>
+              <li><Link to="/insurance" className="text-gray-300 hover:text-brand-primary transition-colors">Insurance Assistance</Link></li>
+              <li><Link to="/faq" className="text-gray-300 hover:text-brand-primary transition-colors">FAQ</Link></li>
               <li><Link to="/service-areas" className="text-gray-300 hover:text-brand-primary transition-colors">Service Areas</Link></li>
-              <li><Link to="/contact" className="text-gray-300 hover:text-brand-primary transition-colors">Book Appointment</Link></li>
+              <li><Link to="/contact" className="text-brand-primary font-semibold hover:text-white transition-colors mt-2 inline-block">Book Appointment</Link></li>
             </ul>
           </div>
 
